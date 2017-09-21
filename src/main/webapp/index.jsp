@@ -51,7 +51,7 @@
             <a class="menu-toggle" href="#"><span>Menu</span></a>
 
             <div class="logo">
-                <a href="#" onclick="jQuery('.menu-toggle').click()">WHISPER</a>
+                <a href="javascript:void(0);" onclick="jQuery('.menu-toggle').click()">WHISPER</a>
             </div>
 
             <nav id="main-nav-wrap">
@@ -276,7 +276,7 @@
         <div class="col-four tab-full">
 
             <div class="icon">
-                <i class="iconfont icon-dingwei1"></i>
+                <i class="icon-pin"></i>
             </div>
 
             <h5>Where to find me</h5>
@@ -292,7 +292,7 @@
         <div class="col-four tab-full collapse">
 
             <div class="icon">
-                <i class="iconfont icon-youjian"></i>
+                <i class="icon-mail"></i>
             </div>
 
             <h5>Email Me At</h5>
@@ -305,7 +305,7 @@
         <div class="col-four tab-full">
 
             <div class="icon">
-                <i class="iconfont icon-dianhua"></i>
+                <i class="icon-phone"></i>
             </div>
 
             <h5>Call Me At</h5>
