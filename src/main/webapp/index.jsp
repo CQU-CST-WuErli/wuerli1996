@@ -28,15 +28,17 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/vendor.css">
     <link rel="stylesheet" href="css/iconfont/iconfont.css">
+    <%--<link rel="stylesheet" href="css/bootstrap.min.css">--%>
 
     <!-- script
     ================================================== -->
     <script src="js/modernizr.js"></script>
     <script src="js/pace.min.js"></script>
+    <%--<script src="js/bootstrap.min.js"></script>--%>
 
     <!-- favicons
      ================================================== -->
-    <link rel="icon" type="image/png" href="images/favicon.ico">
+    <link rel="icon" type="image/png" href="images/favicon-1.ico">
 
 </head>
 
@@ -62,6 +64,7 @@
                     <%--<li><a class="smoothscrol#l"  href="#portfolio" title="">Portfolio</a></li>--%>
                     <%--<li><a class="smoothscroll"  href="#services" title="">Services</a></li>--%>
                     <li><a class="smoothscroll"  href="#contact" title="">Contact</a></li>
+                    <li><a class="smoothscroll" href="#" title="">My Blog</a></li>
                 </ul>
             </nav>
         </div> <!-- /top-bar -->
@@ -96,10 +99,10 @@
     </div> <!-- /intro-content -->
 
     <ul class="intro-social">
-        <li><a href="#"><i class="iconfont icon-qq"></i></a></li>
-        <li><a href="#"><i class="iconfont icon-github"></i></a></li>
-        <li><a href="#"><i class="iconfont icon-csdn"></i></a></li>
-        <li><a href="#"><i class="iconfont icon-xinlangweibo"></i></a></li>
+        <li><a href="javascript:void(0);"  class="nouseicon"><i class="iconfont icon-qq"></i></a></li>
+        <li><a href="https://github.com/CQU-CST-WuErli" target="_blank"><i class="iconfont icon-github"></i></a></li>
+        <li><a href="http://blog.csdn.net/cquwel" target="_blank"><i class="iconfont icon-csdn"></i></a></li>
+        <li><a href="javascript:void(0);"  class="nouseicon"><i class="iconfont icon-xinlangweibo"></i></a></li>
     </ul> <!-- /intro-social -->
 
 </section> <!-- /intro -->
@@ -205,7 +208,7 @@
     <div class="row button-section">
         <div class="col-twelve">
             <a href="#contact" title="Contact Me" class="button stroke smoothscroll">Contact Me</a>
-            <a href="#" title="Download CV" class="button button-primary">Download CV</a>
+            <a href="javascript:void(0);" title="Download CV" class="button button-primary nohire">Download CV</a>
         </div>
     </div>
 
@@ -231,18 +234,17 @@
             <!-- form -->
             <form name="contactForm" id="contactForm" method="post" action="">
                 <fieldset>
-
                     <div class="form-field">
-                        <input name="contactName" type="text" id="contactName" placeholder="Name" value="" minlength="2" required="">
+                        <input name="name" type="text" id="contactName" placeholder="Name" value="" minlength="2" required="">
                     </div>
                     <div class="form-field">
-                        <input name="contactEmail" type="email" id="contactEmail" placeholder="Email" value="" required="">
+                        <input name="email" type="email" id="contactEmail" placeholder="Email" value="" required="">
                     </div>
                     <div class="form-field">
-                        <input name="contactSubject" type="text" id="contactSubject" placeholder="Subject" value="">
+                        <input name="subject" type="text" id="contactSubject" placeholder="Subject" value="">
                     </div>
                     <div class="form-field">
-                        <textarea name="contactMessage" id="contactMessage" placeholder="message" rows="10" cols="50" required=""></textarea>
+                        <textarea name="message" id="contactMessage" placeholder="message" rows="10" cols="50" required=""></textarea>
                     </div>
                     <div class="form-field">
                         <button class="submitform">Submit</button>
@@ -255,7 +257,6 @@
                             </div>
                         </div>
                     </div>
-
                 </fieldset>
             </form> <!-- Form End -->
 
@@ -266,27 +267,20 @@
             <div id="message-success">
                 <i class="fa fa-check"></i>Your message was sent, thank you!<br>
             </div>
-
         </div> <!-- /col-twelve -->
-
     </div> <!-- /contact-form -->
 
     <div class="row contact-info">
-
         <div class="col-four tab-full">
-
             <div class="icon">
                 <i class="icon-pin"></i>
             </div>
-
             <h5>Where to find me</h5>
-
             <p>
                 ChongQing<br>
                 Shapingba District<br>
                 CHongQIng University Campus A
             </p>
-
         </div>
 
         <div class="col-four tab-full collapse">

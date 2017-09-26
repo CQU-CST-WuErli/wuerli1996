@@ -216,52 +216,62 @@
 	/*	contact form
 	------------------------------------------------------ */
 
-	/* local validation */
-	$('#contactForm').validate({
+	$.fn.serializeObject = function () {
+        var o = {};
+        var a = this.serializeArray();
+        $.each(a, function () {
+            if (o[this.name] != undefined) {
+                if (!o[this.name].push) {
+                    o[this.name] = [o[this.name]];
+                }
+                o[this.name].push(this.value || '');
+            } else {
+                o[this.name] = this.value || '';
+            }
+        });
+        return o;
+    };
 
-		/* submit via ajax */
-		submitHandler: function(form) {
+	$(".submitform").click(function () {
+        var name = $("#contactName").val();
+        var email = $("#contactEmail").val();
+        var subject = $("#contactSubject").val();
+        var message = $("#contactMessage").val();
 
-			var sLoader = $('#submit-loader');
-
-			$.ajax({      	
-
-		      type: "POST",
-		      url: "inc/sendEmail.php",
-		      data: $(form).serialize(),
-		      beforeSend: function() { 
-
-		      	sLoader.fadeIn(); 
-
-		      },
-		      success: function(msg) {
-
-	            // Message was sent
-	            if (msg == 'OK') {
-	            	sLoader.fadeOut(); 
-	               $('#message-warning').hide();
-	               $('#contactForm').fadeOut();
-	               $('#message-success').fadeIn();   
-	            }
-	            // There was an error
-	            else {
-	            	sLoader.fadeOut(); 
-	               $('#message-warning').html(msg);
-		            $('#message-warning').fadeIn();
-	            }
-
-		      },
-		      error: function() {
-
-		      	sLoader.fadeOut(); 
-		      	$('#message-warning').html("Something went wrong. Please try again.");
-		         $('#message-warning').fadeIn();
-
-		      }
-
-	      });     		
-  		}
-
+        var sLoader = $("#submit-loader");
+        $.ajax({
+            type: "POST",
+            url: "api/sendEmail",
+            data: JSON.stringify($("#contactForm").serializeObject()),
+            dataType: 'json',
+            contentType:'application/json;charset=UTF-8',
+            beforeSend: function () {
+                sLoader.fadeIn();
+            },
+            success: function (result) {
+                if (result['status'] == 0) {
+                    sLoader.fadeOut();
+                    $('#message-warning').hide();
+                    $('#contactForm').fadeOut();
+                    $('#message-success').fadeIn();
+                } else {
+                    sLoader.fadeOut();
+                    $('#message-warning').html(result['info']);
+                    $('#message-warning').fadeIn();
+                }
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                if (textStatus == "timeout") {
+                    sLoader.fadeOut();
+                    $('#message-warning').html("Connection timeout. Please try later.");
+                    $('#message-warning').fadeIn();
+                } else {
+                    sLoader.fadeOut();
+                    $('#message-warning').html("Something went wrong. Please try again.");
+                    $('#message-warning').fadeIn();
+                }
+            }
+        });
 	});
 
 
@@ -286,6 +296,20 @@
 
 		}		
 
-	});		
+	});
+
+	/********************************************************************/
+    /*Some helper function
+     -------------------------------------------------------------------*/
+
+    // nousericon nohire
+    $(".nouseicon").click(function () {
+        alert("Sorry for privacy!");
+    });
+
+    $(".nohire").click(function () {
+        alert("I'm not ready for hire!");
+    });
+
 
 })(jQuery);
