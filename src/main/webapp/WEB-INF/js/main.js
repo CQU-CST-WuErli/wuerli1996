@@ -238,6 +238,8 @@
         var subject = $("#contactSubject").val();
         var message = $("#contactMessage").val();
 
+        // console.log([name, email, subject, message]);
+
         var sLoader = $("#submit-loader");
         $.ajax({
             type: "POST",
@@ -249,6 +251,7 @@
                 sLoader.fadeIn();
             },
             success: function (result) {
+            	console.log(result);
                 if (result['status'] == 0) {
                     sLoader.fadeOut();
                     $('#message-warning').hide();
@@ -260,16 +263,10 @@
                     $('#message-warning').fadeIn();
                 }
             },
-            error: function (jqXHR, textStatus, errorThrown) {
-                if (textStatus == "timeout") {
-                    sLoader.fadeOut();
-                    $('#message-warning').html("Connection timeout. Please try later.");
-                    $('#message-warning').fadeIn();
-                } else {
-                    sLoader.fadeOut();
-                    $('#message-warning').html("Something went wrong. Please try again.");
-                    $('#message-warning').fadeIn();
-                }
+            error: function () {
+                sLoader.fadeOut();
+                $('#message-warning').html("Something went wrong. Please try again.");
+                $('#message-warning').fadeIn();
             }
         });
 	});

@@ -46,11 +46,13 @@ public class EmailController {
             if (!m.matches()) {
                 result.setInfo("Email Address is not vaild!");
             } else {
-                emailService.sendEmail(email);
                 result.setStatus(0);
                 result.setInfo(email.toString());
             }
         }
+        System.out.println(email.toString());
+        System.out.println(result.toString());
+
         return result;
     }
 }

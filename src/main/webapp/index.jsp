@@ -232,7 +232,7 @@
         <div class="col-twelve">
 
             <!-- form -->
-            <form name="contactForm" id="contactForm" method="post" action="">
+            <form name="contactForm" id="contactForm">
                 <fieldset>
                     <div class="form-field">
                         <input name="name" type="text" id="contactName" placeholder="Name" value="" minlength="2" required="">
@@ -247,7 +247,7 @@
                         <textarea name="message" id="contactMessage" placeholder="message" rows="10" cols="50" required=""></textarea>
                     </div>
                     <div class="form-field">
-                        <button class="submitform">Submit</button>
+                        <button class="submitform" type="button">Submit</button>
                         <div id="submit-loader">
                             <div class="text-loader">Sending...</div>
                             <div class="s-loader">
