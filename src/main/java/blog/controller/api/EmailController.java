@@ -3,6 +3,7 @@ package blog.controller.api;
 import blog.pojo.json.Email;
 import blog.pojo.json.Result;
 import blog.service.EmailService;
+import org.apache.commons.mail.EmailException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -27,7 +28,7 @@ public class EmailController {
 
     @RequestMapping(value = "/sendEmail")
     @ResponseBody
-    public Result sendEmail(@RequestBody Email email) {
+    public Result sendEmail(@RequestBody Email email) throws EmailException {
         Result result = new Result();
 
         result.setStatus(1);
@@ -46,6 +47,7 @@ public class EmailController {
             if (!m.matches()) {
                 result.setInfo("Email Address is not vaild!");
             } else {
+                emailService.sendEmail(email);
                 result.setStatus(0);
                 result.setInfo(email.toString());
             }

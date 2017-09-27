@@ -2,3 +2,4 @@
 /target/
 /wuerli1996.iml
 /src/main/resources/property/mail.properties
+/src/main/resources/property/log4j.properties

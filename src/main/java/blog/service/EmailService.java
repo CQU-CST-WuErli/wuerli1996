@@ -1,6 +1,7 @@
 package blog.service;
 
 import blog.pojo.json.Email;
+import org.apache.commons.mail.EmailException;
 
 
 /**
@@ -10,5 +11,5 @@ import blog.pojo.json.Email;
  */
 
 public interface EmailService {
-    void sendEmail(Email email) ;
+    void sendEmail(Email email) throws EmailException;
 }
