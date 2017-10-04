@@ -34,7 +34,6 @@
             <a class="blog-nav-item active" href="#">Home</a>
             <a class="blog-nav-item" href="#">Archives</a>
             <a class="blog-nav-item" href="#">About</a>
-            <a class="blog-nav-item" href="#">About</a>
             <a class="blog-nav-item" href="http://www.wuerli1996.cn">Personal Homepage</a>
         </nav>
     </div>
