@@ -64,7 +64,7 @@
                     <%--<li><a class="smoothscrol#l"  href="#portfolio" title="">Portfolio</a></li>--%>
                     <%--<li><a class="smoothscroll"  href="#services" title="">Services</a></li>--%>
                     <li><a class="smoothscroll"  href="#contact" title="">Contact</a></li>
-                    <li><a class="smoothscroll" href="#" title="">My Blog</a></li>
+                    <li><a href="blog" title="">My Blog</a></li>
                 </ul>
             </nav>
         </div> <!-- /top-bar -->

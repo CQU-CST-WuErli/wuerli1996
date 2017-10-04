@@ -55,7 +55,8 @@ public class EmailServiceImpl implements EmailService {
         htmlEmail.setFrom(username);
         htmlEmail.setSubject(email.getSubject());
         htmlEmail.addTo(to);
+        htmlEmail.send();
 
-        System.out.println("result=" + htmlEmail.send());
+//        System.out.println("result=" + htmlEmail.send());
     }
 }
