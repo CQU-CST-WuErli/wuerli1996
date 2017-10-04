@@ -14,20 +14,8 @@ public class Blog {
     private String title;
     private String content;
     private Date date;
-    private String catagory;
+    private String category;
     private String tags;
-
-    @Override
-    public String toString() {
-        return "Blog{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", content='" + content + '\'' +
-                ", date=" + date +
-                ", catagory='" + catagory + '\'' +
-                ", tags='" + tags + '\'' +
-                '}';
-    }
 
     public int getId() {
         return id;
@@ -61,12 +49,12 @@ public class Blog {
         this.date = date;
     }
 
-    public String getCatagory() {
-        return catagory;
+    public String getCategory() {
+        return category;
     }
 
-    public void setCatagory(String catagory) {
-        this.catagory = catagory;
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     public String getTags() {

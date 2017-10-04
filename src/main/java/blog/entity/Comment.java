@@ -13,6 +13,7 @@ public class Comment {
     private int id;
     private String name;
     private String mail;
+    private String content;
     private Date date;
     private int blogid;
 
@@ -22,6 +23,7 @@ public class Comment {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", mail='" + mail + '\'' +
+                ", content='" + content + '\'' +
                 ", date=" + date +
                 ", blogid=" + blogid +
                 '}';
@@ -49,6 +51,14 @@ public class Comment {
 
     public void setMail(String mail) {
         this.mail = mail;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
     }
 
     public Date getDate() {

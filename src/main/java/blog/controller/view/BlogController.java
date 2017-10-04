@@ -2,6 +2,12 @@ package blog.controller.view;
 
 import blog.dao.BlogDao;
 import blog.entity.Blog;
+import blog.model.BlogIndexViewObject;
+import blog.service.BlogService;
+import com.vladsch.flexmark.ast.Node;
+import com.vladsch.flexmark.html.HtmlRenderer;
+import com.vladsch.flexmark.parser.Parser;
+import com.vladsch.flexmark.util.options.MutableDataSet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,28 +23,23 @@ import java.util.Date;
  */
 
 @Controller
-@RequestMapping("/blog")
 public class BlogController {
 
     @Autowired
-    private BlogDao blogDao;
+    private BlogService blogService;
 
     @RequestMapping("/text")
     public String test() {
-        Blog blog = new Blog();
-        blog.setTitle("test");
-        blog.setContent("test");
-        blog.setDate(new Date());
-        blog.setCatagory("test");
-        blog.setTags("test");
-        blogDao.add(blog);
         return "test";
     }
 
-    @RequestMapping("/index")
+    @RequestMapping("/blog")
     public ModelAndView index() {
         ModelAndView modelAndView = new ModelAndView();
 
+        BlogIndexViewObject object = blogService.getIndex();
+
+        modelAndView.addObject("object", object);
         modelAndView.setViewName("blog/index");
         return modelAndView;
     }

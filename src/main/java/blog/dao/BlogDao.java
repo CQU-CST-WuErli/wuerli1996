@@ -10,4 +10,8 @@ import blog.entity.Blog;
 
 public interface BlogDao {
     int add(Blog blog);
+
+    Blog selectById(int id);
+
+    Blog getLatestBlog();
 }
