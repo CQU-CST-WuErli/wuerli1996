@@ -31,11 +31,9 @@
 </head>
 <body>
 <div id="wrapper">
-    <img class="fade" src="images/404.png">
     <div>
         <h1 class="fade">温馨提示：您访问的地址不存在！</h1>
-        <p class="fade">你正在寻找的页面无法找到。
-            <a style="opacity: 1;" class="link" href="http://www.wuerli1996.cn" onclick="history.go(-1)">返回个人主页</a></p>
+        <a style="opacity: 1;" class="link" href="http://www.wuerli1996.cn" onclick="history.go(-1)">返回个人主页</a>
     </div>
 </div>
 </body>

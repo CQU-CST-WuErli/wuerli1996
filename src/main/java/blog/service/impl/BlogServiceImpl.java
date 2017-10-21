@@ -22,14 +22,18 @@ import java.text.ParseException;
 @Service
 public class BlogServiceImpl implements BlogService {
 
-    @Autowired
-    private BlogDao blogDao;
+    private final BlogDao blogDao;
+
+    private final CategoryDao categoryDao;
+
+    private final TagDao tagDao;
 
     @Autowired
-    private CategoryDao categoryDao;
-
-    @Autowired
-    private TagDao tagDao;
+    public BlogServiceImpl(BlogDao blogDao, CategoryDao categoryDao, TagDao tagDao) {
+        this.blogDao = blogDao;
+        this.categoryDao = categoryDao;
+        this.tagDao = tagDao;
+    }
 
     public BlogIndexViewObject getIndex() {
         BlogIndexViewObject object = new BlogIndexViewObject();
@@ -40,7 +44,7 @@ public class BlogServiceImpl implements BlogService {
         object.setTagList(StringConverter.toList(latestBlog.getTags()));
         object.setContent(StringConverter.convert(latestBlog.getContent()));
 
-        System.out.println(latestBlog.getContent().length());
+        System.out.println(latestBlog.getContent());
 
         object.setCategories(categoryDao.getAll());
 

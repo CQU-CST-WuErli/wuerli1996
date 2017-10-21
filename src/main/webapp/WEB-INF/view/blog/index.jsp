@@ -31,9 +31,9 @@
 <div class="blog-masthead" >
     <div class="container">
         <nav class="blog-nav">
-            <a class="blog-nav-item active" href="#">Home</a>
-            <a class="blog-nav-item" href="#">Archives</a>
-            <a class="blog-nav-item" href="#">About</a>
+            <a class="blog-nav-item active" href="javascript:void(0);">Home</a>
+            <a class="blog-nav-item" href="blog/list">Archives</a>
+            <a class="blog-nav-item" href="blog/about">About</a>
             <a class="blog-nav-item" href="http://www.wuerli1996.cn">Personal Homepage</a>
         </nav>
     </div>
@@ -54,7 +54,7 @@
                 <p class="blog-post-meta">Post in ${object.date}</p>
                 <p>Tag:
                     <c:forEach items="${object.tagList}" var="list">
-                        <span><a href="javascript:void(0);" style="text-decoration: none; color: #858585;"><i class="iconfont icon-tag-copy"></i>${list}</a></span>
+                        <span><i class="iconfont icon-tag-copy"></i>${list}</span>
                     </c:forEach>
                 </p>
                 <div id="warp-content">
@@ -105,8 +105,8 @@
             <div class="sidebar-module">
                 <h4>Links</h4>
                 <ol class="list-unstyled">
-                    <li><a href="https://github.com/CQU-CST-WuErli">GitHub</a></li>
-                    <li><a href="http://blog.csdn.net/cquwel">CSDN</a></li>
+                    <li><a href="https://github.com/CQU-CST-WuErli" target="_blank">GitHub</a></li>
+                    <li><a href="http://blog.csdn.net/cquwel" target="_blank">CSDN</a></li>
                 </ol>
             </div>
         </div><!-- /.blog-sidebar -->
@@ -123,7 +123,46 @@
 <%--js--%>
 <script src="js/jquery-2.1.3.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
-<script src="js/blog.js"></script>
+<%--<script src="js/blog.js"></script>--%>
+<script>
+    (function ($) {
+        $(document).ready(function () {
+            var child = $('#warp-content').children();
+            // console.log(child.length);
+            var slideHeight = 250;
+            var n = child.length;
+            var currHeight = 0;
+            var pos = -1;
+            for (var i = 0; i < n; i++) {
+                currHeight += $(child[i]).height();
+                // console.log(currHeight);
+                if (currHeight > slideHeight) {
+                    pos = i;
+                    break;
+                }
+            }
+            // console.log(pos);
+            if (pos !== -1) {
+                for (var i = pos + 1; i < n; i++) {
+                    $(child[i]).fadeOut();
+                }
+                var tmpHeight = slideHeight - (currHeight - $(child[pos]).height());
+                var tt = $(child[pos]).height();
+                $(child[pos]).css('height', tmpHeight + 'px');
+                console.log(tt);
+                $('#warp-content').append('<nav><ul class="pager"><li><a href="javascript:void(0);" id="read-more-button">Read more</a></li></ul></nav>');
+                $('#read-more-button').click(function () {
+                    $(child[pos]).css('height', tt + 'px');
+                    $('#read-more-button').remove();
+                    for (var i = pos + 1; i < n; i++) {
+                        $(child[i]).fadeIn();
+                    }
+                    return false;
+                });
+            }
+        });
+    })(jQuery);
+</script>
 </body>
 </html>
 

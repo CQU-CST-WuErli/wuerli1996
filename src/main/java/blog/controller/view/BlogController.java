@@ -44,5 +44,13 @@ public class BlogController {
         return modelAndView;
     }
 
+    @RequestMapping("/blog/list")
+    public ModelAndView list() {
+        ModelAndView modelAndView = new ModelAndView();
+
+
+        modelAndView.setViewName("blog/list");
+        return modelAndView;
+    }
 
 }
