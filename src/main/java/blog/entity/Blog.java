@@ -2,6 +2,7 @@ package blog.entity;
 
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by CQU-CST-WuErli on 2017/9/28 at 15:33.
@@ -16,6 +17,25 @@ public class Blog {
     private Date date;
     private String category;
     private String tags;
+    private List<String> tagList;
+    private String stdDate;
+
+
+    public String getStdDate() {
+        return stdDate;
+    }
+
+    public void setStdDate(String stdDate) {
+        this.stdDate = stdDate;
+    }
+
+    public List<String> getTagList() {
+        return tagList;
+    }
+
+    public void setTagList(List<String> tagList) {
+        this.tagList = tagList;
+    }
 
     public int getId() {
         return id;

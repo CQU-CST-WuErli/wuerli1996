@@ -14,4 +14,16 @@
     <select id="getLatestBlog" resultType="Blog">
         SELECT * FROM blog ORDER BY id DESC LIMIT 1
     </select>
+
+
+    <resultMap id="SimpleMap" type="Blog">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="title" property="title" jdbcType="VARCHAR"/>
+        <result column="date" property="date" jdbcType="TIMESTAMP"/>
+        <result column="tags" property="tags" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <select id="getAllSimpleInfo" resultMap="SimpleMap">
+        SELECT id, title, date, tags FROM blog
+    </select>
 </mapper>

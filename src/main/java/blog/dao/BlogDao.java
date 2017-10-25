@@ -2,6 +2,8 @@ package blog.dao;
 
 import blog.entity.Blog;
 
+import java.util.List;
+
 /**
  * Created by CQU-CST-WuErli on 2017/9/28 at 15:41.
  * Description :
@@ -14,4 +16,6 @@ public interface BlogDao {
     Blog selectById(int id);
 
     Blog getLatestBlog();
+
+    List<Blog> getAllSimpleInfo();
 }

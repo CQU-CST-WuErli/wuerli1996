@@ -105,8 +105,11 @@
             <div class="sidebar-module">
                 <h4>Links</h4>
                 <ol class="list-unstyled">
-                    <li><a href="https://github.com/CQU-CST-WuErli" target="_blank">GitHub</a></li>
-                    <li><a href="http://blog.csdn.net/cquwel" target="_blank">CSDN</a></li>
+                    <c:forEach items="${object.linkList}" var="list">
+                        <li><a href="${list.url}" target="_blank">${list.title}</a></li>
+                    </c:forEach>
+                    <%--<li><a href="https://github.com/CQU-CST-WuErli" target="_blank">GitHub</a></li>--%>
+                    <%--<li><a href="http://blog.csdn.net/cquwel" target="_blank">CSDN</a></li>--%>
                 </ol>
             </div>
         </div><!-- /.blog-sidebar -->

@@ -1,19 +1,12 @@
 package blog.controller.view;
 
-import blog.dao.BlogDao;
-import blog.entity.Blog;
-import blog.model.BlogIndexViewObject;
+import blog.model.ArticleListVO;
+import blog.model.BlogIndexVO;
 import blog.service.BlogService;
-import com.vladsch.flexmark.ast.Node;
-import com.vladsch.flexmark.html.HtmlRenderer;
-import com.vladsch.flexmark.parser.Parser;
-import com.vladsch.flexmark.util.options.MutableDataSet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-
-import java.util.Date;
 
 
 /**
@@ -37,7 +30,7 @@ public class BlogController {
     public ModelAndView index() {
         ModelAndView modelAndView = new ModelAndView();
 
-        BlogIndexViewObject object = blogService.getIndex();
+        BlogIndexVO object = blogService.getIndex();
 
         modelAndView.addObject("object", object);
         modelAndView.setViewName("blog/index");
@@ -48,7 +41,9 @@ public class BlogController {
     public ModelAndView list() {
         ModelAndView modelAndView = new ModelAndView();
 
+        ArticleListVO object = blogService.getArticleList();
 
+        modelAndView.addObject("object", object);
         modelAndView.setViewName("blog/list");
         return modelAndView;
     }

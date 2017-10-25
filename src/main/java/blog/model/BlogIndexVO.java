@@ -1,5 +1,7 @@
 package blog.model;
 
+import blog.entity.Link;
+
 import java.util.Date;
 import java.util.List;
 
@@ -9,13 +11,22 @@ import java.util.List;
  * Copyright (c) 2017 CQU_CST_WuErli. All rights reserved.
  */
 
-public class BlogIndexViewObject {
+public class BlogIndexVO {
     private String title;
     private String date;
     private List<String> tagList;
     private String content;
     private List<String> categories;
     private List<String> tags;
+    private List<Link> linkList;
+
+    public List<Link> getLinkList() {
+        return linkList;
+    }
+
+    public void setLinkList(List<Link> linkList) {
+        this.linkList = linkList;
+    }
 
     public String getDate() {
         return date;

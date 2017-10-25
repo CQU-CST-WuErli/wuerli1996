@@ -33,7 +33,7 @@
 <div id="wrapper">
     <div>
         <h1 class="fade">温馨提示：您访问的地址不存在！</h1>
-        <a style="opacity: 1;" class="link" href="http://www.wuerli1996.cn" onclick="history.go(-1)">返回个人主页</a>
+        <%--<a style="opacity: 1;" class="link" href="http://www.wuerli1996.cn">返回个人主页</a>--%>
     </div>
 </div>
 </body>

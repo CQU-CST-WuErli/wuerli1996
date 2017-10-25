@@ -1,8 +1,7 @@
 package blog.service;
 
-import blog.model.BlogIndexViewObject;
-
-import java.text.ParseException;
+import blog.model.ArticleListVO;
+import blog.model.BlogIndexVO;
 
 /**
  * Created by CQU-CST-WuErli on 2017/10/4 at 17:58.
@@ -11,5 +10,7 @@ import java.text.ParseException;
  */
 
 public interface BlogService {
-    BlogIndexViewObject getIndex();
+    BlogIndexVO getIndex();
+
+    ArticleListVO getArticleList();
 }
