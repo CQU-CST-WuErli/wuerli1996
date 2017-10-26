@@ -80,4 +80,23 @@ public class BlogServiceImpl implements BlogService {
         return object;
     }
 
+    public BlogIndexVO getDetail(int id) {
+        BlogIndexVO object = new BlogIndexVO();
+
+        Blog blog = blogDao.selectById(id);
+        object.setTitle(blog.getTitle());
+        object.setDate(TimeTool.toTimestamp(blog.getDate()));
+        object.setTagList(StringConverter.toList(blog.getTags()));
+        object.setContent(StringConverter.convert(blog.getContent()));
+
+        System.out.println(blog.getContent());
+
+        object.setCategories(categoryDao.getAll());
+
+        object.setTags(tagDao.getAll());
+
+        object.setLinkList(linkDao.getAllLinks());
+        return object;
+    }
+
 }

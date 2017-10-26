@@ -13,4 +13,6 @@ public interface BlogService {
     BlogIndexVO getIndex();
 
     ArticleListVO getArticleList();
+
+    BlogIndexVO getDetail(int id);
 }

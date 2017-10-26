@@ -48,7 +48,6 @@
     <div class="row">
 
         <div class="col-sm-8 blog-main">
-
             <div class="blog-post">
                 <h2 class="blog-post-title">${object.title} <span><i class="iconfont icon-new" style="color: orange;"></i></span></h2>
                 <p class="blog-post-meta">Post in ${object.date}</p>

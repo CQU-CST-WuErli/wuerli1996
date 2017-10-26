@@ -14,24 +14,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../images/favicon-1.ico">
+    <link rel="icon" href="../../images/favicon-1.ico">
 
     <title>Wu Erli's Blog</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="../css/blog.css" rel="stylesheet">
-    <link href="../css/iconfont/iconfont.css" rel="stylesheet">
+    <link href="../../css/blog.css" rel="stylesheet">
+    <link href="../../css/iconfont/iconfont.css" rel="stylesheet">
 </head>
 <body>
 <div class="blog-masthead" >
     <div class="container">
         <nav class="blog-nav">
-            <a class="blog-nav-item" href="../blog">Home</a>
+            <a class="blog-nav-item" href="../../blog">Home</a>
             <a class="blog-nav-item active" href="javascript:void(0);">Archives</a>
-            <a class="blog-nav-item" href="about">About</a>
+            <a class="blog-nav-item" href="../about">About</a>
             <a class="blog-nav-item" href="http://www.wuerli1996.cn">Personal Homepage</a>
         </nav>
     </div>
@@ -44,19 +44,18 @@
             <p class="lead blog-description">Get busy living or get busy dying.</p>
         </div>
         <div class="col-sm-8 blog-main" style="padding-left: 0px">
-            <li class="list-group-item">Article List</li>
-            <li class="list-group-item" style="font-size: 85%; overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
-                <c:forEach items="${object.blogList}" var="list">
-                    <span><i class="iconfont icon-wenzhang"></i></span><span><a href="detail/${list.id}" title="${list.title}">${list.title}</a></span>
-                    <br>
-                    <span>
-                    <c:forEach items="${list.tagList}" var="tag">
-                        <span style="font-size: 75%;"><i class="iconfont icon-tag-copy"></i>${tag}</span>
+            <div class="blog-post">
+                <h2 class="blog-post-title">${object.title}</h2>
+                <p class="blog-post-meta">Post in ${object.date}</p>
+                <p>Tag:
+                    <c:forEach items="${object.tagList}" var="list">
+                        <span><i class="iconfont icon-tag-copy"></i>${list}</span>
                     </c:forEach>
-                </span>
-                    <span style="float: right;">${list.stdDate}</span>
-                </c:forEach>
-            </li>
+                </p>
+                <div id="warp-content">
+                    ${object.content}
+                </div>
+            </div>
         </div>
 
         <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
@@ -79,10 +78,6 @@
                     <c:forEach items="${object.categories}" var="list">
                         <li><a href="#">${list}</a></li>
                     </c:forEach>
-                    <%--<li><a href="#">Java Web</a></li>--%>
-                    <%--<li><a href="#">Algorithm</a></li>--%>
-                    <%--<li><a href="#">ACM</a></li>--%>
-                    <%--<li><a href="#">Data Mining</a></li>--%>
                 </ol>
             </div>
             <div class="sidebar-module">
@@ -92,21 +87,17 @@
                     <c:forEach items="${object.tags}" var="list">
                         <li><a href="#">${list}</a></li>
                     </c:forEach>
-                    <%--<li><a href="#">Dp</a></li>--%>
-                    <%--<li><a href="#">Spring</a></li>--%>
-                    <%--<li><a href="#">mysql</a></li>--%>
                 </ol>
             </div>
             <div class="sidebar-module">
                 <h4>Links</h4>
                 <ol class="list-unstyled">
-                    <c:forEach items="${object.links}" var="list">
+                    <c:forEach items="${object.linkList}" var="list">
                         <li><a href="${list.url}" target="_blank">${list.title}</a></li>
                     </c:forEach>
                 </ol>
             </div>
         </div>
-
     </div>
 
 </div>
@@ -116,8 +107,8 @@
 </footer>
 
 <%--js--%>
-<script src="../js/jquery-2.1.3.min.js"></script>
-<script src="../js/bootstrap.min.js"></script>
-<script src="../js/blog.js"></script>
+<script src="../../js/jquery-2.1.3.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+<script src="../../js/blog.js"></script>
 </body>
 </html>

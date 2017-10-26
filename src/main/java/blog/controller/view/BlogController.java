@@ -5,6 +5,8 @@ import blog.model.BlogIndexVO;
 import blog.service.BlogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -45,6 +47,17 @@ public class BlogController {
 
         modelAndView.addObject("object", object);
         modelAndView.setViewName("blog/list");
+        return modelAndView;
+    }
+
+    @RequestMapping("/blog/detail/{id}")
+    public ModelAndView detail(@PathVariable("id") int id) {
+        ModelAndView modelAndView = new ModelAndView();
+
+        BlogIndexVO object = blogService.getDetail(id);
+
+        modelAndView.addObject("object", object);
+        modelAndView.setViewName("blog/detail");
         return modelAndView;
     }
 
