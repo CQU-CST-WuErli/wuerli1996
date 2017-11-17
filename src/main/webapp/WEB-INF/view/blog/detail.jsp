@@ -38,7 +38,7 @@
 </div>
 
 <div class="container">
-    <div class="row">
+    <div class="row" style="margin-left: 0px;">
         <div class="blog-header">
             <h1 class="blog-title">Wu Erli's Blog</h1>
             <p class="lead blog-description">Get busy living or get busy dying.</p>
