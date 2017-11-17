@@ -12,6 +12,7 @@ import java.util.List;
  */
 
 public class BlogIndexVO {
+    private int id;
     private String title;
     private String date;
     private List<String> tagList;
@@ -19,6 +20,14 @@ public class BlogIndexVO {
     private List<String> categories;
     private List<String> tags;
     private List<Link> linkList;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public List<Link> getLinkList() {
         return linkList;
