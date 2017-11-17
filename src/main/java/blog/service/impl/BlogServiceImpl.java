@@ -13,6 +13,7 @@ import blog.service.BlogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -49,8 +50,6 @@ public class BlogServiceImpl implements BlogService {
         object.setDate(TimeTool.toTimestamp(latestBlog.getDate()));
         object.setTagList(StringConverter.toList(latestBlog.getTags()));
         object.setContent(StringConverter.convert(latestBlog.getContent()));
-
-        System.out.println(latestBlog.getContent());
 
         object.setCategories(categoryDao.getAll());
 
@@ -89,13 +88,37 @@ public class BlogServiceImpl implements BlogService {
         object.setTagList(StringConverter.toList(blog.getTags()));
         object.setContent(StringConverter.convert(blog.getContent()));
 
-        System.out.println(blog.getContent());
-
         object.setCategories(categoryDao.getAll());
 
         object.setTags(tagDao.getAll());
 
         object.setLinkList(linkDao.getAllLinks());
+        return object;
+    }
+
+    public ArticleListVO getArticleByKey(String keyword) {
+        ArticleListVO object = new ArticleListVO();
+
+        List<Blog> blogList = blogDao.getByKey(keyword);
+
+        if (blogList == null) {
+            blogList = new ArrayList<Blog>();
+        }
+
+
+        if (blogList.size() > 0) {
+            for (Blog blog: blogList) {
+                blog.setTagList(StringConverter.toList(blog.getTags()));
+                blog.setStdDate(TimeTool.toTimestamp(blog.getDate()));
+            }
+        }
+        object.setBlogList(blogList);
+        object.setCategories(categoryDao.getAll());
+
+        object.setTags(tagDao.getAll());
+
+        object.setLinks(linkDao.getAllLinks());
+
         return object;
     }
 

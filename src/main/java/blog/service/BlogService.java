@@ -15,4 +15,6 @@ public interface BlogService {
     ArticleListVO getArticleList();
 
     BlogIndexVO getDetail(int id);
+
+    ArticleListVO getArticleByKey(String keyword);
 }

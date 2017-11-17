@@ -26,4 +26,9 @@
     <select id="getAllSimpleInfo" resultMap="SimpleMap">
         SELECT id, title, date, tags FROM blog
     </select>
+
+    <select id="getByKey" parameterType="String" resultMap="SimpleMap">
+        SELECT id, title, date, tags FROM blog WHERE title REGEXP #{key}
+        OR content REGEXP #{key} OR catagory REGEXP #{key} OR tags REGEXP #{key}
+    </select>
 </mapper>

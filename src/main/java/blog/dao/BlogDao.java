@@ -18,4 +18,6 @@ public interface BlogDao {
     Blog getLatestBlog();
 
     List<Blog> getAllSimpleInfo();
+
+    List<Blog> getByKey(String key);
 }

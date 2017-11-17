@@ -20,8 +20,12 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class BlogController {
 
+    private final BlogService blogService;
+
     @Autowired
-    private BlogService blogService;
+    public BlogController(BlogService blogService) {
+        this.blogService = blogService;
+    }
 
     @RequestMapping("/text")
     public String test() {
@@ -58,6 +62,16 @@ public class BlogController {
 
         modelAndView.addObject("object", object);
         modelAndView.setViewName("blog/detail");
+        return modelAndView;
+    }
+
+    @RequestMapping("/blog/search")
+    public ModelAndView search(String keyword) {
+        ModelAndView modelAndView = new ModelAndView();
+
+        ArticleListVO object = blogService.getArticleByKey(keyword);
+        modelAndView.addObject("object", object);
+        modelAndView.setViewName("blog/search");
         return modelAndView;
     }
 

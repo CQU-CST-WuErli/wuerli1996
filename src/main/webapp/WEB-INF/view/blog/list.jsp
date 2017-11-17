@@ -30,7 +30,7 @@
     <div class="container">
         <nav class="blog-nav">
             <a class="blog-nav-item" href="../blog">Home</a>
-            <a class="blog-nav-item active" href="javascript:void(0);">Archives</a>
+            <a class="blog-nav-item active" href="list">Archives</a>
             <a class="blog-nav-item" href="about">About</a>
             <a class="blog-nav-item" href="http://www.wuerli1996.cn">Personal Homepage</a>
         </nav>
@@ -65,9 +65,9 @@
                 <form class="bs-example bs-example-form" role="form" style="margin-left: 7%">
                     <div class="row">
                         <div class="input-group">
-                            <input type="text" class="form-control" >
+                            <input id="search-keyword" type="text" class="form-control" >
                             <span class="input-group-btn">
-                                    <button class="btn btn-default" type="button">Go!</button>
+                                    <button id="search-button" class="btn btn-default" type="button">Go!</button>
                             </span>
                         </div>
                     </div>
@@ -77,7 +77,7 @@
                 <h4>Categories</h4>
                 <ol class="list-unstyled">
                     <c:forEach items="${object.categories}" var="list">
-                        <li><a href="#">${list}</a></li>
+                        <li><a href="search?keyword=${list}">${list}</a></li>
                     </c:forEach>
                     <%--<li><a href="#">Java Web</a></li>--%>
                     <%--<li><a href="#">Algorithm</a></li>--%>
@@ -90,7 +90,7 @@
                 <%--need to beautify--%>
                 <ol class="list-unstyled">
                     <c:forEach items="${object.tags}" var="list">
-                        <li><a href="#">${list}</a></li>
+                        <li><a href="search?keyword=${list}">${list}</a></li>
                     </c:forEach>
                     <%--<li><a href="#">Dp</a></li>--%>
                     <%--<li><a href="#">Spring</a></li>--%>
@@ -118,6 +118,16 @@
 <%--js--%>
 <script src="../js/jquery-2.1.3.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
-<script src="../js/blog.js"></script>
+<%--<script src="../js/blog.js"></script>--%>
+<script>
+    (function ($) {
+        $("#search-button").click(function () {
+            var keyword = $("#search-keyword").val();
+            if (keyword !== null && keyword !== "" && keyword.replace(/\s/g,'').length > 0) {
+                window.location.href = "search?keyword=" + keyword;
+            }
+        });
+    })(jQuery);
+</script>
 </body>
 </html>
