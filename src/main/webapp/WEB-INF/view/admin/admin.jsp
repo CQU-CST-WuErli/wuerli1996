@@ -175,29 +175,13 @@
             showMethod: "fadeIn",
             hideMethod: "fadeOut"
         };
-//        {
-//            "title": "test",
-//            "category": {
-//            "value": "test",
-//                "new": "0"
-//        },
-//            "tags": [
-//            {
-//                "value": "test",
-//                "new": "0"
-//            },
-//            {
-//                "value": "test",
-//                "new": "1"
-//            }
-//        ]
-//        }
+
 
         var title;
         var content;
         var category;
         var flag = false;
-        var tags;
+        var data = new Object();
         index = 0;
         var tt = false;
         function fadeIn(name) {
@@ -271,7 +255,7 @@
                 } else if (index < 3) {
                     $first = $("#head");
                     $first.attr('id', '');
-                    $first.after("<span flag='old' class=\"label label-default tag-item\" id=\"head\">" +
+                    $first.after("<span flag=\"false\" class=\"label label-default tag-item\" id=\"head\">" +
                         tmptag + "<a class=\"delete-tag\" href=\"javascript:void(0);\" onclick=\"javascript:remove(this);\" style=\"color: black; text-decoration: none;\">&times;</a>" +
                         "</span>");
                     index++;
@@ -298,7 +282,7 @@
                 if (index < 3) {
                     $first = $("#head");
                     $first.attr('id', '');
-                    $first.after("<span flag='new' class=\"label label-default tag-item\" id=\"head\">" +
+                    $first.after("<span flag=\"true\" class=\"label label-default tag-item\" id=\"head\">" +
                         $("#input-tag").val() + "<a class=\"delete-tag\" href=\"javascript:void(0);\" onclick=\"javascript:remove(this);\" style=\"color: black; text-decoration: none;\">&times;</a>" +
                         "</span>");
                     index++;
@@ -307,14 +291,63 @@
                 }
             }
         });
-        $(".delete-tag").click(function () {
-            console.log(123);
-        });
-        $("#deploy-button").click(function () {
-            title = $("#title").val();
-            content = $("#content").val();
-        });
 
+        //        {
+//            "title": "test",
+//            "category": {
+//            "value": "test",
+//                "new": "0"
+//        },
+//            "tags": [
+//            {
+//                "value": "test",
+//                "new": "0"
+//            },
+//            {
+//                "value": "test",
+//                "new": "1"
+//            }
+//        ]
+//        }
+
+        $("#submit-button").click(function () {
+            data['title'] = $("#title").val();
+            data['content'] = $("#content").val();
+            data['category'] = {'value' : category, 'flag' : flag};
+            data['tags'] = new Array();
+            var id = 0;
+            $(".tag-item").each(function (item) {
+                var str = $(this).text();
+                str = str.substr(0, str.length - 1);
+                var state = $(this).attr('flag') == "true" ? true : false;
+                 data['tags'][id++] = {'value' : str, 'flag' : state};
+            });
+            if (data['title'] == "" || data['content'] == "" || category == null || category == "" || data['tags'].length == 0) {
+                toastr.error('Please check all input field');
+                return;
+            }
+
+            json_data = JSON.stringify(data);
+            console.log(json_data);
+            $.ajax({
+                url : 'api/addBlog',
+                type : 'POST',
+                data : json_data,
+                dataType : 'json',
+                contentType:'application/json;charset=UTF-8',
+                error: function () {
+                    toastr.error("Something error when request!");
+                },
+                success: function(result) {
+                    console.log(result);
+                    if (result['status'] === 0) {
+                        toastr.info("Deploy success!");
+                    } else {
+                        toastr.error("Something error in backend!");
+                    }
+                }
+            });
+        });
     })(jQuery);
     function remove(obj) {
         $(obj).parent().prev().attr('id', 'head');

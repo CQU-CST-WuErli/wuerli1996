@@ -251,7 +251,7 @@
                 sLoader.fadeIn();
             },
             success: function (result) {
-            	console.log(result);
+            	// console.log(result);
                 if (result['status'] == 0) {
                     sLoader.fadeOut();
                     $('#message-warning').hide();
