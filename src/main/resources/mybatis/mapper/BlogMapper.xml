@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="blog.dao.BlogDao">
     <insert id="add" parameterType="Blog" useGeneratedKeys="true" keyProperty="id">
-        INSERT INTO blog(title, content, date, category, tags)
+        INSERT INTO blog(title, content, date, catagory, tags)
         VALUES (#{title}, #{content}, #{date}, #{category}, #{tags})
     </insert>
     <select id="selectById" parameterType="_int" resultType="Blog">

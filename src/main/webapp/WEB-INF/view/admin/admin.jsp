@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by CQU-CST-WuErli
   Date: 2017/11/17
@@ -76,10 +77,12 @@
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                        <li><a href="javascript:void(0);" class="dropdownMenu1Item">Action</a></li>
-                        <li><a href="javascript:void(0);" class="dropdownMenu1Item">Another action</a></li>
-                        <li><a href="javascript:void(0);" class="dropdownMenu1Item">Something else here</a></li>
-                        <li><a href="javascript:void(0);" class="dropdownMenu1Item">Separated link</a></li>
+                        <c:forEach items="${object.categories}" var="list">
+                            <li><a href="javascript:void(0);" class="dropdownMenu1Item">${list}</a></li>
+                        </c:forEach>
+                        <%--<li><a href="javascript:void(0);" class="dropdownMenu1Item">Another action</a></li>--%>
+                        <%--<li><a href="javascript:void(0);" class="dropdownMenu1Item">Something else here</a></li>--%>
+                        <%--<li><a href="javascript:void(0);" class="dropdownMenu1Item">Separated link</a></li>--%>
                     </ul>
                     <button class="btn btn-primary" type="button" id="newcategory-btn">New category</button>
                     <div class="input-group" style="width: 51%;">
@@ -97,10 +100,12 @@
                     <button style="width: 30%;" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Choose tags<span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                        <li><a href="javascript:void(0);" class="dropdownMenu2Item">Action</a></li>
-                        <li><a href="javascript:void(0);" class="dropdownMenu2Item">Another action</a></li>
-                        <li><a href="javascript:void(0);" class="dropdownMenu2Item">Something else here</a></li>
-                        <li><a href="javascript:void(0);" class="dropdownMenu2Item">Separated link</a></li>
+                        <c:forEach items="${object.tags}" var="list">
+                            <li><a href="javascript:void(0);" class="dropdownMenu2Item">${list}</a></li>
+                        </c:forEach>
+                        <%--<li><a href="javascript:void(0);" class="dropdownMenu2Item">Another action</a></li>--%>
+                        <%--<li><a href="javascript:void(0);" class="dropdownMenu2Item">Something else here</a></li>--%>
+                        <%--<li><a href="javascript:void(0);" class="dropdownMenu2Item">Separated link</a></li>--%>
                     </ul>
                     <button class="btn btn-primary" type="button" id="add-exit-tag-btn">Add</button>
                 </div>
@@ -124,7 +129,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-primary" id="submit-button">Submit</button>
+                <button type="button" class="btn btn-primary" id="submit-button" data-dismiss="modal">Submit</button>
             </div>
         </div>
     </div>

@@ -5,8 +5,12 @@ import blog.dao.CategoryDao;
 import blog.dao.LinkDao;
 import blog.dao.TagDao;
 import blog.entity.Blog;
+import blog.entity.Category;
+import blog.entity.Tag;
+import blog.model.AdminVO;
 import blog.model.ArticleListVO;
 import blog.model.BlogIndexVO;
+import blog.pojo.json.Article;
 import blog.pojo.tool.StringConverter;
 import blog.pojo.tool.TimeTool;
 import blog.service.BlogService;
@@ -14,6 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -121,6 +126,40 @@ public class BlogServiceImpl implements BlogService {
         object.setLinks(linkDao.getAllLinks());
 
         return object;
+    }
+
+    public AdminVO getAdmin() {
+        AdminVO object = new AdminVO();
+        object.setCategories(categoryDao.getAll());
+        object.setTags(tagDao.getAll());
+        return object;
+    }
+
+    public void addArticle(Article article) {
+        Blog blog = new Blog();
+        blog.setTitle(article.getTitle());
+        blog.setContent(article.getContent());
+        blog.setDate(new Date());
+        blog.setCategory(article.getCategory().getValue());
+        StringBuilder str = new StringBuilder();
+        for (int i = 0; i < article.getTags().size(); i++) {
+            if (i > 0) str.append("|");
+            str.append(article.getTags().get(i).getValue());
+        }
+        blog.setTags(str.toString());
+        blogDao.add(blog);
+        if (article.getCategory().isFlag()) {
+            Category category = new Category();
+            category.setCategory(article.getCategory().getValue());
+            categoryDao.add(category);
+        }
+        for (int i = 0; i < article.getTags().size(); i++) {
+            if (article.getTags().get(i).isFlag()) {
+                Tag tag = new Tag();
+                tag.setTag(article.getTags().get(i).getValue());
+                tagDao.add(tag);
+            }
+        }
     }
 
 }

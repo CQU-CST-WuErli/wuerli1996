@@ -1,6 +1,10 @@
 package blog.controller.view;
 
+import blog.model.AdminVO;
+import blog.service.BlogService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -14,9 +18,17 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class AdminController {
+
+    @Autowired
+    private BlogService blogService;
+
     @RequestMapping("/admin")
     public ModelAndView admin() {
         ModelAndView modelAndView = new ModelAndView();
+
+        AdminVO object = blogService.getAdmin();
+
+        modelAndView.addObject("object", object);
         modelAndView.setViewName("admin/admin");
         return modelAndView;
     }

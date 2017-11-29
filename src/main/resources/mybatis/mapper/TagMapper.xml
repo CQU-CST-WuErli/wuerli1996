@@ -6,4 +6,7 @@
     <select id="getAll" resultType="String">
         SELECT tag FROM tag
     </select>
+    <insert id="add" parameterType="Tag" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO tag(tag) VALUES (#{tag})
+    </insert>
 </mapper>

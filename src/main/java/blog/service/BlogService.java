@@ -1,7 +1,9 @@
 package blog.service;
 
+import blog.model.AdminVO;
 import blog.model.ArticleListVO;
 import blog.model.BlogIndexVO;
+import blog.pojo.json.Article;
 
 /**
  * Created by CQU-CST-WuErli on 2017/10/4 at 17:58.
@@ -17,4 +19,8 @@ public interface BlogService {
     BlogIndexVO getDetail(int id);
 
     ArticleListVO getArticleByKey(String keyword);
+
+    AdminVO getAdmin();
+
+    void addArticle(Article article);
 }

@@ -12,4 +12,6 @@ import java.util.List;
 
 public interface CategoryDao {
     List<String> getAll();
+
+    void add(Category category);
 }

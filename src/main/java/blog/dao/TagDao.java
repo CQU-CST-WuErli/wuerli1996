@@ -1,5 +1,7 @@
 package blog.dao;
 
+import blog.entity.Tag;
+
 import java.util.List;
 
 /**
@@ -10,4 +12,6 @@ import java.util.List;
 
 public interface TagDao {
     List<String> getAll();
+
+    void add(Tag tag);
 }
